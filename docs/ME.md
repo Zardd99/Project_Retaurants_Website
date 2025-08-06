@@ -18,5 +18,5 @@
 
 # push to docker hub
 
-- docker login  # Log in to Docker Hub
-docker push zarde/restaurant_app_final:latest
+- docker login # Log in to Docker Hub
+- docker push zarde/restaurant_app_final:latest

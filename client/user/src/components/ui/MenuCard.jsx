@@ -30,18 +30,18 @@ const MenuCard = ({ allMenuPage }) => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
+      <div className="flex items-center justify-center min-h-[400px] bg-hero-gray-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-hero-red-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-6 py-12 cal-sans-bold">
+    <div className="container mx-auto px-6 py-12 cal-sans-bold bg-hero-gray-900 min-h-screen rounded-[25px]">
       {error && (
-        <div className="bg-hero-gray-50 border border-hero-gray-300 text-black px-4 py-3 rounded-lg mb-8 max-w-md mx-auto text-center">
+        <div className="bg-hero-gray-800 border border-hero-red-500 text-hero-white px-4 py-3 rounded-lg mb-8 max-w-md mx-auto text-center">
           <svg
-            className="w-5 h-5 inline mr-2"
+            className="w-5 h-5 inline mr-2 text-hero-red-400"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -56,15 +56,17 @@ const MenuCard = ({ allMenuPage }) => {
       )}
 
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-black mb-4">Our Menu</h1>
-        <div className="w-24 h-1 bg-gradient-to-r from-black to-hero-gray-600 mx-auto rounded-full"></div>
+        <h1 className="cal-sans-bold text-5xl font-bold text-hero-white mb-4">
+          Our Menu
+        </h1>
+        <div className="w-24 h-1 bg-gradient-to-r from-hero-red-500 to-hero-red-700 mx-auto rounded-full"></div>
       </div>
 
       {!allMenuPage && menuItems.length > 8 && (
         <div className="text-center mt-12">
           <Link
             to="/allmenu"
-            className="inline-flex items-center px-8 py-4 bg-black text-hero-white font-semibold rounded-full hover:bg-hero-gray-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-hero-gray-200"
+            className="inline-flex items-center px-8 py-4 bg-hero-red-600 text-hero-white font-semibold rounded-full hover:bg-hero-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-hero-red-500"
           >
             View All Menu Items
             <svg
@@ -86,22 +88,20 @@ const MenuCard = ({ allMenuPage }) => {
       <div className="p-4"></div>
 
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ${
-          allMenuPage
-            ? ""
-            : "max-h-[1200px] overflow-y-scroll overflow-x-hidden sm:overflow-auto"
+        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-4 ${
+          allMenuPage ? "" : "max-h-[1200px] overflow-y-clip overflow-x-hidden"
         }`}
       >
         {(allMenuPage ? menuItems : menuItems.slice(0, 8)).map((item) => (
           <Link
             key={item.id}
             to={`/menu/${item.id}`}
-            className="group relative bg-hero-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-hero-gray-200 hover:border-black"
+            className="group relative bg-hero-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-hero-gray-700 hover:border-hero-red-500"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-hero-gray-50 via-hero-gray-100 to-hero-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-hero-red-900 via-hero-gray-800 to-hero-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <div className="relative p-6">
-              <div className="aspect-square mb-6 rounded-xl overflow-hidden bg-hero-gray-50 border border-hero-gray-200">
+              <div className="aspect-square mb-6 rounded-xl overflow-hidden bg-hero-gray-700 border border-hero-gray-600">
                 <img
                   src={item.image_url || "/api/placeholder/300/300"}
                   alt={item.title}
@@ -110,17 +110,17 @@ const MenuCard = ({ allMenuPage }) => {
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-black group-hover:text-hero-gray-600 transition-colors duration-300 line-clamp-2">
+                <h3 className="text-xl font-bold text-hero-white group-hover:text-hero-red-300 transition-colors duration-300 line-clamp-2">
                   {item.title}
                 </h3>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-black">
+                  <span className="text-2xl font-bold text-hero-red-400">
                     {item.price_tag}
                   </span>
-                  <div className="w-8 h-8 bg-hero-gray-100 rounded-full flex items-center justify-center group-hover:bg-black transition-colors duration-300 border border-hero-gray-200">
+                  <div className="w-8 h-8 bg-hero-gray-700 rounded-full flex items-center justify-center group-hover:bg-hero-red-600 transition-colors duration-300 border border-hero-gray-600 group-hover:border-hero-red-500">
                     <svg
-                      className="w-4 h-4 text-black group-hover:text-hero-white transition-colors duration-300"
+                      className="w-4 h-4 text-hero-white group-hover:text-hero-white transition-colors duration-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
